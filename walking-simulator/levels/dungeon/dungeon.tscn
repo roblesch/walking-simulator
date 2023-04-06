@@ -7,11 +7,11 @@
 ambient_light_source = 3
 ambient_light_color = Color(1, 0.996078, 0.847059, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.02
+ambient_light_energy = 0.0
 sdfgi_read_sky_light = false
 fog_enabled = true
 fog_light_color = Color(1, 0.996078, 0.847059, 1)
-fog_light_energy = 0.02
+fog_light_energy = 0.01
 fog_density = 0.2
 volumetric_fog_density = 0.02
 volumetric_fog_albedo = Color(1, 0.996078, 0.847059, 1)
