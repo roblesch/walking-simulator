@@ -4,10 +4,9 @@
 [ext_resource type="MeshLibrary" uid="uid://fismouck21yf" path="res://levels/dungeon/tilesets/dungeon_meshlibrary.tres" id="2_xcxw7"]
 
 [sub_resource type="Environment" id="Environment_bmpqg"]
-ambient_light_source = 3
 ambient_light_color = Color(1, 0.996078, 0.847059, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.0
+ambient_light_energy = 0.01
 sdfgi_read_sky_light = false
 fog_enabled = true
 fog_light_color = Color(1, 0.996078, 0.847059, 1)
