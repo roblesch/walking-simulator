@@ -47,3 +47,25 @@ mesh = SubResource("PlaneMesh_2lkv4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0.01, 0)
 shape = SubResource("ConvexPolygonShape3D_n7g6l")
+
+[node name="FloatingLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78027, -9.88012)
+light_color = Color(1, 0.996078, 0.937255, 1)
+light_specular = 0.0
+distance_fade_begin = 1.0
+distance_fade_length = 2.0
+
+[node name="FloorLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1857, 0.567346, 0.178249)
+light_color = Color(1, 0.996078, 0.937255, 1)
+light_size = 1.0
+light_specular = 0.0
+shadow_opacity = 0.0
+distance_fade_begin = 1.0
+distance_fade_length = 2.0
+
+[node name="SpotLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11.2417, 2.96034, -0.062734)
+light_color = Color(1, 0.996078, 0.937255, 1)
+light_energy = 2.0
+light_specular = 0.0
