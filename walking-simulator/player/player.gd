@@ -52,7 +52,7 @@ func _input(event):
 		bulletInst.set_as_top_level(true)
 		get_parent().add_child(bulletInst)
 		bulletInst.global_transform.origin = gunRay.get_collision_point() as Vector3
-		bulletInst.look_at((gunRay.get_collision_point()+gunRay.get_collision_normal()),Vector3.BACK)
+		bulletInst.look_at((gunRay.get_collision_point()+gunRay.get_collision_normal()),Vector3.UP)
 		#print(gunRay.get_collision_point())
 		#print(gunRay.get_collision_point()+gunRay.get_collision_normal())
 
