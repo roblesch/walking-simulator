@@ -17,3 +17,7 @@ mono_crash.*.json
 
 # Krita
 *.*~
+
+# Blender
+*.blend1
+
