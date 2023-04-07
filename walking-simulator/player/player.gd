@@ -20,9 +20,15 @@ var bulletHoles = []
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	#Captures mouse and stops rgun from hitting yourself
+	# Captures mouse and stops rgun from hitting yourself
 	gunRay.add_exception(self)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+	# Bind alt
+	var key_alt = InputEventKey.new()
+	key_alt.physical_keycode = KEY_ALT
+	InputMap.add_action("key_alt")
+	InputMap.action_add_event("key_alt", key_alt)
 
 func _physics_process(delta):
 	# Add gravity
@@ -45,6 +51,15 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func mouse_captured():
+	return Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
+
+func swap_mouse_mode():
+	if mouse_captured():
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		match event.keycode:
@@ -60,8 +75,12 @@ func _input(event):
 		get_node("Head").position.y = STANDING_HEIGHT
 		get_node("HeadCollider").disabled = false
 
+	# Release mouse with alt
+	if Input.is_action_just_pressed("key_alt"):
+		swap_mouse_mode()
+
 	# Rotate camera with mouse
-	if event is InputEventMouseMotion:
+	elif event is InputEventMouseMotion and mouse_captured():
 		rotation.y -= event.relative.x / mouseSens
 		$Head/Camera3d.rotation.x -= event.relative.y / mouseSens
 		$Head/Camera3d.rotation.x = clamp($Head/Camera3d.rotation.x, deg_to_rad(-90), deg_to_rad(90) )
@@ -70,6 +89,11 @@ func _input(event):
 
 	# Create a bullet hole on the surface the player "shoots"
 	if Input.is_action_just_pressed("Shoot"):
+		# Capture on click without shooting
+		if not mouse_captured():
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			return
+
 		# No hit, no hole
 		if not gunRay.is_colliding():
 			return

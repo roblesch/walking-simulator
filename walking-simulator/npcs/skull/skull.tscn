@@ -113,12 +113,13 @@ mesh = SubResource("ArrayMesh_kh4yy")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Mesh/Skull"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00503408, 0.0255367, 0.184299)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00503407, 0.0255367, 0.0723489)
 light_color = Color(0.368627, 0.360784, 0.32549, 1)
-light_energy = 0.2
 light_volumetric_fog_energy = 0.0
+light_size = 2.0
 light_specular = 0.0
 distance_fade_begin = 0.0
+omni_range = 0.280356
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
