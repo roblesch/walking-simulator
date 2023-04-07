@@ -8,7 +8,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const MAX_BULLET_HOLES = 30
 
-var mouseSens = 300
+var mouseSens = 400
 var mouse_relative_x = 0
 var mouse_relative_y = 0
 var bulletHoles = []
