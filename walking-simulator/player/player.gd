@@ -16,6 +16,8 @@ var mouse_relative_x = 0
 var mouse_relative_y = 0
 var bulletHoles = []
 
+signal looking_at_angel()
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -90,6 +92,9 @@ func _input(event):
 		bulletInst.look_at((gunRay.get_collision_point()+gunRay.get_collision_normal()),
 			Vector3.UP if abs(gunRay.get_collision_normal().dot(Vector3.UP)) < 1
 			else Vector3.FORWARD)
+
+		if "WeepingAngel" in gunRay.get_collider().get_name():
+			looking_at_angel.emit()
 
 		# This doesn't really work, the velocity gets overriden by skull physics.
 		# The skull can accumulate velocity (acceleration) but that's hard...

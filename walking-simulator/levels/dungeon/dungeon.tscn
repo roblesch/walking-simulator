@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhcwxe6x2rff1"]
+[gd_scene load_steps=10 format=3 uid="uid://bhcwxe6x2rff1"]
 
 [ext_resource type="PackedScene" uid="uid://c0j21aget0hjp" path="res://player/player.tscn" id="1_5oy3g"]
+[ext_resource type="Script" path="res://levels/dungeon/dungeon.gd" id="1_hurk6"]
 [ext_resource type="MeshLibrary" uid="uid://3jcq62uvjsw8" path="res://levels/dungeon/dungeon_meshlibrary.tres" id="2_q1hi1"]
 [ext_resource type="PackedScene" uid="uid://dkdcau2kcece4" path="res://npcs/skull/skull.tscn" id="3_8peyi"]
+[ext_resource type="PackedScene" uid="uid://c1ykou10o4a4l" path="res://weeping_angel.tscn" id="3_i05xo"]
+[ext_resource type="Script" path="res://weeping_angel.gd" id="4_tq6ub"]
 
 [sub_resource type="Environment" id="Environment_bmpqg"]
 ambient_light_color = Color(1, 0.996078, 0.847059, 1)
@@ -29,6 +32,7 @@ volumetric_fog_ambient_inject = 0.2
 points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
 
 [node name="Dungeon" type="Node3D"]
+script = ExtResource("1_hurk6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bmpqg")
@@ -46,6 +50,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.599, 1.75, 11.126)
 
 [node name="Skull3" parent="Actors" instance=ExtResource("3_8peyi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817, 1.75, 11.126)
+
+[node name="WeepingAngel" parent="Actors" instance=ExtResource("3_i05xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125329, 1.17552, -7.91501)
+script = ExtResource("4_tq6ub")
 
 [node name="Lights" type="Node" parent="."]
 
@@ -108,3 +116,5 @@ mesh = SubResource("PlaneMesh_2lkv4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundPlane"]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0.01, 0)
 shape = SubResource("ConvexPolygonShape3D_n7g6l")
+
+[connection signal="looking_at_angel" from="Actors/Player" to="Actors/WeepingAngel" method="_on_player_looking_at_angel"]

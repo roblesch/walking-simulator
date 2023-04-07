@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://dkdcau2kcece4"]
 
-[ext_resource type="Texture2D" uid="uid://st87il2c26pr" path="res://npcs/skull/assets/skull_animation_bone.png" id="1_3ylvh"]
+[ext_resource type="Texture2D" uid="uid://i2j8firok3f2" path="res://npcs/skull/assets/skull_animation_bone.png" id="1_3ylvh"]
 [ext_resource type="Script" path="res://npcs/skull/skull.gd" id="1_g8e5v"]
-[ext_resource type="Texture2D" uid="uid://bbf5hcrnho5qi" path="res://npcs/skull/assets/skull_animation_bone_n.png" id="2_evo3s"]
+[ext_resource type="Texture2D" uid="uid://b5yduekgjpjon" path="res://npcs/skull/assets/skull_animation_bone_n.png" id="2_evo3s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdu4b"]
 resource_name = "bone"
