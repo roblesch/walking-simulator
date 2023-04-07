@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhcwxe6x2rff1"]
+[gd_scene load_steps=8 format=3 uid="uid://cchkq0qhi6pfk"]
 
 [ext_resource type="PackedScene" uid="uid://c0j21aget0hjp" path="res://player/player.tscn" id="1_5oy3g"]
 [ext_resource type="MeshLibrary" uid="uid://3jcq62uvjsw8" path="res://levels/dungeon/dungeon_meshlibrary.tres" id="2_q1hi1"]
 [ext_resource type="PackedScene" uid="uid://dkdcau2kcece4" path="res://npcs/skull/skull.tscn" id="3_8peyi"]
+[ext_resource type="PackedScene" uid="uid://tg42pr0gkk6n" path="res://npcs/angel/angel.tscn" id="3_ire42"]
 
 [sub_resource type="Environment" id="Environment_bmpqg"]
 ambient_light_color = Color(1, 0.996078, 0.847059, 1)
@@ -46,6 +47,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.599, 1.75, 11.126)
 
 [node name="Skull3" parent="Actors" instance=ExtResource("3_8peyi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817, 1.75, 11.126)
+
+[node name="WeepingAngel" parent="Actors" instance=ExtResource("3_ire42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.15256e-06, 0.00966084, -10.4095)
 
 [node name="Lights" type="Node" parent="."]
 

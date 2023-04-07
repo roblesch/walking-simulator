@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkdcau2kcece4"]
+[gd_scene load_steps=12 format=3 uid="uid://dkdcau2kcece4"]
 
-[ext_resource type="Texture2D" uid="uid://st87il2c26pr" path="res://npcs/skull/assets/skull_animation_bone.png" id="1_3ylvh"]
+[ext_resource type="Texture2D" uid="uid://i2j8firok3f2" path="res://npcs/skull/assets/skull_animation_bone.png" id="1_3ylvh"]
 [ext_resource type="Script" path="res://npcs/skull/skull.gd" id="1_g8e5v"]
-[ext_resource type="Texture2D" uid="uid://bbf5hcrnho5qi" path="res://npcs/skull/assets/skull_animation_bone_n.png" id="2_evo3s"]
+[ext_resource type="Texture2D" uid="uid://b5yduekgjpjon" path="res://npcs/skull/assets/skull_animation_bone_n.png" id="2_evo3s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdu4b"]
 resource_name = "bone"
@@ -89,8 +89,6 @@ _data = {
 "Cube001_0Action": SubResource("Animation_ut7hk")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_e4uwe"]
-
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p3q04"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
@@ -125,11 +123,6 @@ omni_range = 0.280356
 libraries = {
 "": SubResource("AnimationLibrary_gvv0s")
 }
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.0232434, 0)
-visible = false
-mesh = SubResource("BoxMesh_e4uwe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.023, 0)
