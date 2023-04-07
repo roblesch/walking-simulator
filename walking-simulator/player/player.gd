@@ -16,7 +16,7 @@ var mouse_relative_x = 0
 var mouse_relative_y = 0
 var bulletHoles = []
 
-signal looking_at_angel()
+signal looking_at_angel(isTrue)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -70,6 +70,12 @@ func _input(event):
 		mouse_relative_x = clamp(event.relative.x, -50, 50)
 		mouse_relative_y = clamp(event.relative.y, -50, 10)
 
+	if gunRay.is_colliding():
+		if "WeepingAngel" in gunRay.get_collider().get_name():
+			looking_at_angel.emit(true)
+		else:
+			looking_at_angel.emit(false)
+
 	# Create a bullet hole on the surface the player "shoots"
 	if Input.is_action_just_pressed("Shoot"):
 		# No hit, no hole
@@ -92,9 +98,6 @@ func _input(event):
 		bulletInst.look_at((gunRay.get_collision_point()+gunRay.get_collision_normal()),
 			Vector3.UP if abs(gunRay.get_collision_normal().dot(Vector3.UP)) < 1
 			else Vector3.FORWARD)
-
-		if "WeepingAngel" in gunRay.get_collider().get_name():
-			looking_at_angel.emit()
 
 		# This doesn't really work, the velocity gets overriden by skull physics.
 		# The skull can accumulate velocity (acceleration) but that's hard...

@@ -24,5 +24,5 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 
-func _on_player_looking_at_angel():
-	isSeen = not isSeen
+func _on_player_looking_at_angel(isTrue):
+	isSeen = isTrue

@@ -1,3 +1,3 @@
 extends Node3D
 
-signal looking_at_angel()
+signal looking_at_angel(isTrue)
