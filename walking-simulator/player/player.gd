@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var Cam = $Head/Camera3d as Camera3D
 @export var _bullet_scene : PackedScene
 
-var mouseSensibility = 1200
+var mouseSens = 300
 var mouse_relative_x = 0
 var mouse_relative_y = 0
 const SPEED = 5.0
@@ -38,8 +38,8 @@ func _input(event):
 		if event.keycode == KEY_ESCAPE:
 			get_tree().quit()
 	if event is InputEventMouseMotion:
-		rotation.y -= event.relative.x / mouseSensibility
-		$Head/Camera3d.rotation.x -= event.relative.y / mouseSensibility
+		rotation.y -= event.relative.x / mouseSens
+		$Head/Camera3d.rotation.x -= event.relative.y / mouseSens
 		$Head/Camera3d.rotation.x = clamp($Head/Camera3d.rotation.x, deg_to_rad(-90), deg_to_rad(90) )
 		mouse_relative_x = clamp(event.relative.x, -50, 50)
 		mouse_relative_y = clamp(event.relative.y, -50, 10)

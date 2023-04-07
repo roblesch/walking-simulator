@@ -9,11 +9,17 @@ ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.01
 sdfgi_read_sky_light = false
 fog_enabled = true
-fog_light_color = Color(1, 0.996078, 0.847059, 1)
+fog_light_color = Color(1, 0.996078, 0.937255, 1)
 fog_light_energy = 0.01
-fog_density = 0.2
-volumetric_fog_density = 0.02
-volumetric_fog_albedo = Color(1, 0.996078, 0.847059, 1)
+fog_density = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(1, 0.996078, 0.937255, 1)
+volumetric_fog_emission = Color(1, 0.996078, 0.937255, 1)
+volumetric_fog_emission_energy = 0.01
+volumetric_fog_length = 32.0
+volumetric_fog_detail_spread = 2.0
+volumetric_fog_ambient_inject = 0.2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2lkv4"]
 
@@ -65,7 +71,6 @@ distance_fade_begin = 1.0
 distance_fade_length = 2.0
 
 [node name="SpotLight" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11.2417, 2.96034, -0.062734)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11.2417, 3.04081, -0.062734)
 light_color = Color(1, 0.996078, 0.937255, 1)
-light_energy = 2.0
 light_specular = 0.0
