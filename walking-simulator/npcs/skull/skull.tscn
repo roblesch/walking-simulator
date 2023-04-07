@@ -72,11 +72,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cxhvv")
 
-[sub_resource type="BoxMesh" id="BoxMesh_18mvy"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ipspl"]
-points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
-
 [sub_resource type="Animation" id="Animation_ut7hk"]
 resource_name = "Cube001_0Action"
 length = 1.66667
@@ -84,7 +79,7 @@ loop_mode = 1
 tracks/0/type = "rotation_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/Jaw")
+tracks/0/path = NodePath("Mesh/Skull/Jaw")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, -0.866026, 0, 0, 0.5, 0.0333333, 1, -0.865274, 0, 0, 0.5013, 0.0666667, 1, -0.863463, 0, 0, 0.504413, 0.1, 1, -0.860649, 0, 0, 0.509198, 0.133333, 1, -0.856883, 0, 0, 0.515511, 0.166667, 1, -0.852208, 0, 0, 0.523203, 0.2, 1, -0.846453, 0, 0, 0.532463, 0.233333, 1, -0.839948, 0, 0, 0.542667, 0.266667, 1, -0.832743, 0, 0, 0.55366, 0.3, 1, -0.824892, 0, 0, 0.565291, 0.333333, 1, -0.816457, 0, 0, 0.577407, 0.366667, 1, -0.807459, 0, 0, 0.589924, 0.466667, 1, -0.778809, 0, 0, 0.627261, 0.5, 1, -0.769047, 0, 0, 0.639193, 0.533333, 1, -0.759527, 0, 0, 0.650476, 0.566667, 1, -0.750324, 0, 0, 0.66107, 0.6, 1, -0.74157, 0, 0, 0.670875, 0.633333, 1, -0.733398, 0, 0, 0.679799, 0.666667, 1, -0.725943, 0, 0, 0.687755, 0.7, 1, -0.719723, 0, 0, 0.694261, 0.733333, 1, -0.7146, 0, 0, 0.699533, 0.766667, 1, -0.710706, 0, 0, 0.703489, 0.8, 1, -0.708168, 0, 0, 0.706044, 0.866667, 1, -0.708168, 0, 0, 0.706044, 0.9, 1, -0.710706, 0, 0, 0.703489, 0.933333, 1, -0.7146, 0, 0, 0.699533, 0.966667, 1, -0.719723, 0, 0, 0.694261, 1, 1, -0.725943, 0, 0, 0.687755, 1.03333, 1, -0.733398, 0, 0, 0.679799, 1.06667, 1, -0.74157, 0, 0, 0.670875, 1.1, 1, -0.750324, 0, 0, 0.66107, 1.13333, 1, -0.759527, 0, 0, 0.650476, 1.16667, 1, -0.769047, 0, 0, 0.639193, 1.2, 1, -0.778809, 0, 0, 0.627261, 1.3, 1, -0.807459, 0, 0, 0.589924, 1.33333, 1, -0.816457, 0, 0, 0.577407, 1.36667, 1, -0.824892, 0, 0, 0.565291, 1.4, 1, -0.832743, 0, 0, 0.55366, 1.43333, 1, -0.839948, 0, 0, 0.542667, 1.46667, 1, -0.846453, 0, 0, 0.532463, 1.5, 1, -0.852208, 0, 0, 0.523203, 1.53333, 1, -0.856883, 0, 0, 0.515511, 1.56667, 1, -0.860649, 0, 0, 0.509198, 1.6, 1, -0.863463, 0, 0, 0.504413, 1.63333, 1, -0.865274, 0, 0, 0.5013, 1.66667, 1, -0.866025, 0, 0, 0.5)
@@ -94,23 +89,30 @@ _data = {
 "Cube001_0Action": SubResource("Animation_ut7hk")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_e4uwe"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p3q04"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
 [node name="Skull" type="CharacterBody3D"]
 script = ExtResource("1_g8e5v")
 
 [node name="Mesh" type="Node3D" parent="."]
+
+[node name="Skull" type="Node3D" parent="Mesh"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="Cranium" type="MeshInstance3D" parent="Mesh"]
+[node name="Cranium" type="MeshInstance3D" parent="Mesh/Skull"]
 transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_61fbc")
 skeleton = NodePath("")
 
-[node name="Jaw" type="MeshInstance3D" parent="Mesh"]
+[node name="Jaw" type="MeshInstance3D" parent="Mesh/Skull"]
 transform = Transform3D(0.25, 0, 0, 0, -0.125, 0.216506, 0, -0.216506, -0.125, 0, 0, 0)
 mesh = SubResource("ArrayMesh_kh4yy")
 skeleton = NodePath("")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Mesh"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/Skull"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00503408, 0.0255367, 0.184299)
 light_color = Color(0.368627, 0.360784, 0.32549, 1)
 light_energy = 0.2
@@ -118,16 +120,17 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 distance_fade_begin = 0.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-visible = false
-mesh = SubResource("BoxMesh_18mvy")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_ipspl")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_gvv0s")
 }
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.0232434, 0)
+visible = false
+mesh = SubResource("BoxMesh_e4uwe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.023, 0)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_p3q04")

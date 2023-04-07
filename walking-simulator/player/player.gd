@@ -8,6 +8,9 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const MAX_BULLET_HOLES = 30
 
+const STANDING_HEIGHT = 0.5
+const CROUCHING_HEIGHT = 0.2
+
 var mouseSens = 400
 var mouse_relative_x = 0
 var mouse_relative_y = 0
@@ -43,10 +46,19 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _input(event):
-	# Quit on ESC
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_ESCAPE:
-			get_tree().quit()
+		match event.keycode:
+			# Quit on Esc
+			KEY_ESCAPE:
+				get_tree().quit()
+			# Crouch with ctrl
+			KEY_CTRL:
+				get_node("Head").position.y = CROUCHING_HEIGHT
+				get_node("HeadCollider").disabled = true
+
+	if not Input.is_key_pressed(KEY_CTRL):
+		get_node("Head").position.y = STANDING_HEIGHT
+		get_node("HeadCollider").disabled = false
 
 	# Rotate camera with mouse
 	if event is InputEventMouseMotion:
@@ -73,7 +85,16 @@ func _input(event):
 		get_parent().add_child(bulletInst)
 		bulletHoles.push_back(bulletInst)
 		bulletInst.global_transform.origin = gunRay.get_collision_point() as Vector3
+
 		# If the shot hits floor or ceiling, use FORWARD as up
 		bulletInst.look_at((gunRay.get_collision_point()+gunRay.get_collision_normal()),
 			Vector3.UP if abs(gunRay.get_collision_normal().dot(Vector3.UP)) < 1
 			else Vector3.FORWARD)
+
+		# This doesn't really work, the velocity gets overriden by skull physics.
+		# The skull can accumulate velocity (acceleration) but that's hard...
+		if "Skull" in gunRay.get_collider().get_name():
+			var skull = gunRay.get_collider()
+			var dir_away_player = (skull.position - position).normalized()
+			skull.velocity.x += dir_away_player.x * 2
+			skull.velocity.z += dir_away_player.z * 2
